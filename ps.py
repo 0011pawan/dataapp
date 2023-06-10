@@ -44,6 +44,9 @@ def convert_to_pdf(input_file, output_folder_path):
 
         
 def scrape_files(input_folder_path, output_folder_path):
+    input_folder_path = os.path.abspath(input_folder_path)
+    output_folder_path = os.path.abspath(output_folder_path)
+
     
 
     
