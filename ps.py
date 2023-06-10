@@ -71,8 +71,8 @@ def main():
 
     # Convert files to PDF and display success message
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
-        input_folder_path = os.path.abspath(input_folder_path)
-        output_folder_path = os.path.abspath(output_folder_path)
+        input_folder_path = os.path.join(os.getcwd(), input_folder_path)
+        output_folder_path = os.path.join(os.getcwd(), output_folder_path)
         scrape_files(input_folder_path, output_folder_path)
         st.success('Files scraped successfully!')
 
