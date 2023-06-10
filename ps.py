@@ -6,6 +6,7 @@ import urllib.request
 from xhtml2pdf import pisa
 import shutil
 import streamlit as st
+import ast
 
 def convert_to_pdf(input_file, output_folder_path):
    
@@ -71,11 +72,10 @@ def main():
 
     # Convert files to PDF and display success message
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
-        input_folder_path = eval(input_folder_path)  # Remove the single quotes and get the path as 'C:\Users\hp\Desktop\input'
-        output_folder_path = eval(output_folder_path)
+        input_folder_path = ast.literal_eval(input_folder_path)  # Remove the single quotes and get the path as 'C:\Users\hp\Desktop\input'
+        output_folder_path = ast.literal_eval(output_folder_path)
         scrape_files(input_folder_path, output_folder_path)
         st.success('Files scraped successfully!')
-
 if __name__ == '__main__':
     main()
 
