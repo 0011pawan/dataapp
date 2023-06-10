@@ -46,8 +46,8 @@ def scrape_files(input_folder_path, output_folder_path):
 def main():
     st.title("File Conversion App")
     
-    input_folder_path = os.path.abspath('Input Folder Path')
-    output_folder_path = os.path.abspath('Output Folder Path')
+    input_folder_path = os.path.abspath("C:/Users/hp/Desktop/input")
+    output_folder_path = os.path.abspath("C:/Users/hp/Desktop/output23")
     
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
         scrape_files(input_folder_path, output_folder_path)
