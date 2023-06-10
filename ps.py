@@ -49,8 +49,11 @@ def scrape_files(input_folder_path, output_folder_path):
 
     st.success(f'Files scraped successfully! Input folder path2: {input_folder_path}')
     # Get a list of all files in the input folder
-    input_files = [os.path.join(input_folder_path, f) for f in os.listdir(input_folder_path) if
-                   os.path.isfile(os.path.join(input_folder_path, f))]
+    #input_files = [os.path.join(input_folder_path, f) for f in os.listdir(input_folder_path) if
+                   #os.path.isfile(os.path.join(input_folder_path, f))]
+
+    input_files = [os.path.join(input_folder_path, f) for f in os.listdir(input_folder_path) if os.path.isfile(os.path.join(input_folder_path, f)) and os.path.abspath(os.path.join(input_folder_path, f))]
+
 
 
     # Create a process pool and convert each file to PDF using a separate process
