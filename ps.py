@@ -71,13 +71,10 @@ def main():
 
     # Convert files to PDF and display success message
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
-        input_folder_path = os.path.join(os.getcwd(), input_folder_path)
-        output_folder_path = os.path.join(os.getcwd(), output_folder_path)
-        input_folder_path = input_folder_path.replace("\\", r"\\")  # Replace backslashes with escaped backslashes
-        output_folder_path = output_folder_path.replace("\\", r"\\")  # Replace backslashes with escaped backslashes
+        input_folder_path = input_folder_path.replace("\\\\", "\\")  # Replace double backslashes with single backslashes
+        output_folder_path = output_folder_path.replace("\\\\", "\\")  # Replace double backslashes with single backslashes
         scrape_files(input_folder_path, output_folder_path)
         st.success('Files scraped successfully!')
-
 if __name__ == '__main__':
     main()
 
