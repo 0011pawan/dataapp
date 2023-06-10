@@ -44,7 +44,7 @@ def convert_to_pdf(input_file, output_folder_path):
         os.remove(input_file)
 
         
-def scrape_files(input_folder_path, output_folder_path):
+'''def scrape_files(input_folder_path, output_folder_path):
    
 
     
@@ -58,6 +58,21 @@ def scrape_files(input_folder_path, output_folder_path):
         results = []
         for input_file in input_files:
             results.append(pool.apply_async(convert_to_pdf, args=(input_file, output_folder_path)))
+        for r in results:
+            r.wait()'''
+def scrape_files(input_folder_path, output_folder_path):
+    # Get the absolute path of the input and output folders on the Streamlit app
+    input_folder_path_streamlit = os.path.abspath(input_folder_path)
+    output_folder_path_streamlit = os.path.abspath(output_folder_path)
+
+    # Get a list of all files in the input folder on the Streamlit app
+    input_files_streamlit = [os.path.join(input_folder_path_streamlit, f) for f in os.listdir(input_folder_path_streamlit) if os.path.isfile(os.path.join(input_folder_path_streamlit, f))]
+
+    # Create a process pool and convert each file to PDF using a separate process
+    with multiprocessing.Pool(processes=multiprocessing.cpu_count()) as pool:
+        results = []
+        for input_file_streamlit in input_files_streamlit:
+            results.append(pool.apply_async(convert_to_pdf, args=(input_file_streamlit, output_folder_path_streamlit)))
         for r in results:
             r.wait()
 
