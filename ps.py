@@ -44,10 +44,7 @@ def convert_to_pdf(input_file, output_folder_path):
 
         
 def scrape_files(input_folder_path, output_folder_path):
-    input_folder_path = os.path.abspath(input_folder_path)
-    output_folder_path = os.path.abspath(output_folder_path)
-
-    
+   
 
     
     # Get a list of all files in the input folder
@@ -70,12 +67,14 @@ def main():
     # Get input and output folder paths from the user
     input_folder_path = st.sidebar.text_input("Input Folder Path")
     output_folder_path = st.sidebar.text_input("Output Folder Path")
-    print(input_folder_path)
+    
 
     # Convert files to PDF and display success message
-    if st.button("Convert Files"):
+    if st.button('Scrape Files') and input_folder_path and output_folder_path:
+        input_folder_path = os.path.abspath(input_folder_path)
+        output_folder_path = os.path.abspath(output_folder_path)
         scrape_files(input_folder_path, output_folder_path)
-        st.success("Files converted successfully!")
+        st.success('Files scraped successfully!')
 
 if __name__ == '__main__':
     main()
