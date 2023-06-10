@@ -73,6 +73,8 @@ def main():
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
         input_folder_path = os.path.join(os.getcwd(), input_folder_path)
         output_folder_path = os.path.join(os.getcwd(), output_folder_path)
+        input_folder_path = input_folder_path.replace("\\", r"\\")  # Replace backslashes with escaped backslashes
+        output_folder_path = output_folder_path.replace("\\", r"\\")  # Replace backslashes with escaped backslashes
         scrape_files(input_folder_path, output_folder_path)
         st.success('Files scraped successfully!')
 
