@@ -72,8 +72,8 @@ def main():
 
     # Convert files to PDF and display success message
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
-        input_folder_path = input_folder_path.strip("'")  # Remove the single quotes from the input folder path
-        output_folder_path = output_folder_path.strip("'")
+        input_folder_path = input_folder_path.strip("'").replace('\\\\', '\\')  # Remove the single quotes from the input folder path
+        output_folder_path = output_folder_path.strip("'").replace('\\\\', '\\')
         scrape_files(input_folder_path, output_folder_path)
         st.success('Files scraped successfully!')
 if __name__ == '__main__':
