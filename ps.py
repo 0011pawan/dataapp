@@ -74,8 +74,9 @@ def main():
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
         input_folder_path = input_folder_path.strip("'").replace('\\\\', '\\')  # Remove the single quotes from the input folder path
         output_folder_path = output_folder_path.strip("'").replace('\\\\', '\\')
+        st.success(f'Files scraped successfully! Input folder path: {input_folder_path}')
         scrape_files(input_folder_path, output_folder_path)
-        st.success('Files scraped successfully!')
+        st.success(f'Files scraped successfully! Input folder path: {input_folder_path}')
 if __name__ == '__main__':
     main()
 
