@@ -47,7 +47,7 @@ def convert_to_pdf(input_file, output_folder_path):
 def scrape_files(input_folder_path, output_folder_path):
    
     
-    st.success(f'Files scraped successfully! Input folder path2: {input_folder_path}')
+   
     # Get a list of all files in the input folder
     #input_files = [os.path.join(input_folder_path, f) for f in os.listdir(input_folder_path) if
                    #os.path.isfile(os.path.join(input_folder_path, f))]
@@ -56,6 +56,7 @@ def scrape_files(input_folder_path, output_folder_path):
 
     input_files = glob.glob(os.path.join(input_folder_path, "*"))
     input_files = [f for f in input_files if os.path.isfile(f)]
+    st.success(f'Files scraped successfully! Input folder path2: {input_files}')
 
     # Create a process pool and convert each file to PDF using a separate process
     with multiprocessing.Pool(processes=multiprocessing.cpu_count()) as pool:
