@@ -76,6 +76,11 @@ def main():
     input_folder_path = st.sidebar.text_input("Input Folder Path")
     output_folder_path = st.sidebar.text_input("Output Folder Path")
 
+    # Modify folder paths if necessary
+    input_folder_path = os.path.basename(input_folder_path)
+    output_folder_path = os.path.basename(output_folder_path)
+
+    # Convert files to PDF and display success message
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
         input_folder_path = os.path.abspath(input_folder_path)
         output_folder_path = os.path.abspath(output_folder_path)
@@ -90,6 +95,7 @@ def main():
         st.write("Input Folder Path:", input_folder_path)
         st.write("Output Folder Path:", output_folder_path)
         st.write("Input Files:", input_files)
+
 
 
     
