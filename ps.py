@@ -55,9 +55,10 @@ def scrape_files(input_folder_path, output_folder_path):
     #input_files = [os.path.join(input_folder_path, f) for f in os.listdir(input_folder_path) if os.path.isfile(os.path.join(input_folder_path, f)) and os.path.abspath(os.path.join(input_folder_path, f))]
 
     input_files = glob.glob(os.path.join(input_folder_path, "*"))
-    input_files = [f for f in input_files if os.path.isfile(f)]
     st.success(f'Files scraped successfully! Input folder path2: {input_files}')
 
+    input_files = [f for f in input_files if os.path.isfile(f)]
+   
     # Create a process pool and convert each file to PDF using a separate process
     with multiprocessing.Pool(processes=multiprocessing.cpu_count()) as pool:
         results = []
@@ -80,7 +81,6 @@ def main():
     if st.button('Scrape Files') and input_folder_path and output_folder_path:
         input_folder_path = input_folder_path.strip("'").replace('\\\\', '\\')  # Remove the single quotes from the input folder path
         output_folder_path = output_folder_path.strip("'").replace('\\\\', '\\')
-        st.success(f'Files scraped successfully1! Input folder path: {input_folder_path}')
         scrape_files(input_folder_path, output_folder_path)
         st.success(f'Files scraped successfully! Input folder path: {input_folder_path}')
 if __name__ == '__main__':
