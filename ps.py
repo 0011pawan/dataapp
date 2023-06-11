@@ -80,33 +80,18 @@ def main():
     input_folder_path = os.path.basename(input_folder_path)
     output_folder_path = os.path.basename(output_folder_path)
 
-    # Convert files to PDF and display success message
-    if st.button('Scrape Files') and input_folder_path and output_folder_path:
-        input_folder_path = os.path.abspath(input_folder_path)
-        output_folder_path = os.path.abspath(output_folder_path)
-        
-        if os.path.isdir(input_folder_path) and os.path.isdir(output_folder_path):
-            scrape_files(input_folder_path, output_folder_path)
-            st.success("Files scraped successfully!")
-        else:
-            st.error("Invalid folder path(s). Please provide valid folder paths.")
-
-        # Debugging statements
-        st.write("Input Folder Path:", input_folder_path)
-        st.write("Output Folder Path:", output_folder_path)
-        st.write("Input Files:", input_files)
-
+   
 
 
     
 
     # Convert files to PDF and display success message
-    #if st.button('Scrape Files') and input_folder_path and output_folder_path:
-        #input_folder_path = input_folder_path.strip("'").replace('\\\\', '\\')  # Remove the single quotes from the input folder path
-        #output_folder_path = output_folder_path.strip("'").replace('\\\\', '\\')
+    if st.button('Scrape Files') and input_folder_path and output_folder_path:
+        input_folder_path = input_folder_path.strip("'").replace('\\\\', '\\')  # Remove the single quotes from the input folder path
+        output_folder_path = output_folder_path.strip("'").replace('\\\\', '\\')
         
-        #scrape_files(input_folder_path, output_folder_path)
-        #st.success(f'Files scraped successfully! Input folder path: {input_folder_path}')
+        scrape_files(input_folder_path, output_folder_path)
+        st.success(f'Files scraped successfully! Input folder path: {input_folder_path}')
 if __name__ == '__main__':
     main()
 
