@@ -6,7 +6,7 @@ import urllib.request
 from xhtml2pdf import pisa
 import shutil
 import streamlit as st
-
+import glob
 
 def convert_to_pdf(input_file, output_folder_path):
    
@@ -46,15 +46,16 @@ def convert_to_pdf(input_file, output_folder_path):
         
 def scrape_files(input_folder_path, output_folder_path):
    
-
+    
     st.success(f'Files scraped successfully! Input folder path2: {input_folder_path}')
     # Get a list of all files in the input folder
     #input_files = [os.path.join(input_folder_path, f) for f in os.listdir(input_folder_path) if
                    #os.path.isfile(os.path.join(input_folder_path, f))]
 
-    input_files = [os.path.join(input_folder_path, f) for f in os.listdir(input_folder_path) if os.path.isfile(os.path.join(input_folder_path, f)) and os.path.abspath(os.path.join(input_folder_path, f))]
+    #input_files = [os.path.join(input_folder_path, f) for f in os.listdir(input_folder_path) if os.path.isfile(os.path.join(input_folder_path, f)) and os.path.abspath(os.path.join(input_folder_path, f))]
 
-
+    input_files = glob.glob(os.path.join(input_folder_path, "*"))
+    input_files = [f for f in input_files if os.path.isfile(f)]
 
     # Create a process pool and convert each file to PDF using a separate process
     with multiprocessing.Pool(processes=multiprocessing.cpu_count()) as pool:
