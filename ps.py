@@ -86,6 +86,12 @@ def main():
         else:
             st.error("Invalid folder path(s). Please provide valid folder paths.")
 
+        # Debugging statements
+        st.write("Input Folder Path:", input_folder_path)
+        st.write("Output Folder Path:", output_folder_path)
+        st.write("Input Files:", input_files)
+
+
     
 
     # Convert files to PDF and display success message
